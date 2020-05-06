@@ -8,8 +8,6 @@
 // Example:
 //   fib(4) === 3
 
-const fib = (n) => {
-  console.log(n);
-};
+const fib = (n) => {};
 
 module.exports = fib;
