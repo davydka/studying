@@ -14,6 +14,71 @@
 
 const Stack = require('./stack');
 
-class Queue {}
+class Queue {
+  constructor() {
+    this.a = new Stack();
+    this.b = new Stack();
+  }
+
+  add(val) {
+    return this.a.push(val);
+  }
+
+  peek() {
+    while (this.a.peek()) {
+      this.b.push(this.a.pop());
+    }
+
+    const target = this.b.peek();
+
+    while (this.b.peek()) {
+      this.a.push(this.b.pop());
+    }
+
+    return target;
+  }
+
+  remove() {
+    while (this.a.peek()) {
+      this.b.push(this.a.pop());
+    }
+
+    const target = this.b.pop();
+
+    while (this.b.peek()) {
+      this.a.push(this.b.pop());
+    }
+
+    return target;
+  }
+}
+
+// const test = new Queue();
+// test.add(1);
+// test.add(2);
+// test.add(3);
+// const yea = test.peek();
+
+// nums = [10, 20, 20, 10, 10, 30, 50, 10, 20];
+// const removeDuplicates = (nums) => {
+//   const dupeMap = {}
+//   let target = 0;
+//   for (let i of nums) {
+//     dupeMap[i] = dupeMap[i] + 1 || 1;
+//
+//   }
+//   for (let i in dupeMap) {
+//     let target = 0;
+//     if (dupeMap[i] % 2) {
+//       target++;
+//      }
+//     return target;
+//   }
+//   debugger;
+//   return Object.keys(dupeMap);
+// };
+//
+// const test = removeDuplicates(nums);
+// debugger;
 
 module.exports = Queue;
